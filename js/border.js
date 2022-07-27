@@ -28,6 +28,9 @@ function Level1() {
     for (i = 0; i < 2; i++) {
         borders.push(new Border(350 + i * 60, 365 + i * 60, 60, 60, 1))
     }
+    for (i = 0; i < 5; i++) {
+        borders.push(new Border(1225 - 50 * i, 500, 50, 15, 1))
+    }
 
     //borders around play area
     for (i = 0; i < 72; i++) {

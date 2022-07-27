@@ -90,7 +90,7 @@ function Player (x, y) {
         }
     }
     this.draw = function () {
-        ctx.fillStyle = "black"
+        ctx.fillStyle = "blue"
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }

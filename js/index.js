@@ -8,14 +8,18 @@ var leftKey;
 
 var gameloop;
 var player;
+var enemy;
 var level;
 var borders = [];
+var reset;
 
 window.onload = () => {
     canvas = document.getElementById("game-canvas");
     ctx = canvas.getContext("2d")
     
     player = new Player(50, 500)
+
+    enemy = new Enemy(800, 120)
 
     level = new Level1()
     
@@ -24,17 +28,25 @@ window.onload = () => {
 
     setupInputs();
 
+    reset = document.getElementById('reset')
+    reset.addEventListener('click', function() {
+        player = new Player(50, 500)
+        level = new Level1()
+    })
+
 }
 
 function step () {
     player.step()
+    enemy.step()
     draw();
 }
 
 function draw () {
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, 1280, 720);
-    player.draw();
+    player.draw()
+    enemy.draw();
     for (let i = 0; i < borders.length; i++) {
         borders[i].draw();
     }
