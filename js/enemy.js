@@ -40,5 +40,30 @@ function Enemy (x, y) {
         ctx.fillStyle = "red"
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
-}
+    
+    let enemyRect = {
+        x: this.x,
+        y: this.y,
+        width: this.width,
+        height: this.height,
+    }
+    let hRect = {
+        x: player.x,
+        y: player.y,
+        width: player.width,
+        height: player.height,
+    }
+    let vRect = {
+        x: player.x,
+        y: player.y,
+        width: player.width,
+        height: player.height,
+    }
+    if (checkIntersections(hRect, enemyRect)) {
+        if (confirm("Game Over")) {
+            document.location.reload()
+            clearInterval(gameLoop)
+            }
+        }
+    }
 }

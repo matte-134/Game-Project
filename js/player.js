@@ -60,7 +60,6 @@ function Player (x, y) {
                 width: this.width,
                 height: this.height,
             }
-            console.log(this.yspeed)
 
             for (let i = 0; i < borders.length; i++) {
                 let bordersRect = {
@@ -85,6 +84,16 @@ function Player (x, y) {
                     this.jump = false;
                 }
             }
+            let powerRect = {
+                x: power.x,
+                y: power.y,
+                width: 2 * power.radius,
+                height: 2 * power.radius,
+            }
+            if (checkIntersections(hRect, powerRect)) {
+                player.height = 50;
+                player.width = 25;
+                }
             this.x += this.xspeed
             this.y += this.yspeed
         }

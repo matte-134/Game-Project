@@ -6,39 +6,45 @@ var rightKey;
 var downKey;
 var leftKey;
 
-var gameloop;
+var gameLoop;
 var player;
+var power;
 var enemy;
 var level;
 var borders = [];
 var reset;
+var start;
 
 window.onload = () => {
     canvas = document.getElementById("game-canvas");
     ctx = canvas.getContext("2d")
-    
     player = new Player(50, 500)
-
+    power = new Power(200, 200)    
     enemy = new Enemy(800, 120)
 
     level = new Level1()
-    
-
+        
     gameLoop = setInterval(step, 1000/30)
 
     setupInputs();
 
     reset = document.getElementById('reset')
-    reset.addEventListener('click', function() {
-        player = new Player(50, 500)
-        level = new Level1()
+    reset.addEventListener('click', function () {
+        document.location.reload();
     })
 
+}
+
+
+let startGame = () => {
+    start = document.getElementById("start");
+    
 }
 
 function step () {
     player.step()
     enemy.step()
+    power.step()
     draw();
 }
 
@@ -47,6 +53,7 @@ function draw () {
     ctx.fillRect(0, 0, 1280, 720);
     player.draw()
     enemy.draw();
+    power.draw()
     for (let i = 0; i < borders.length; i++) {
         borders[i].draw();
     }
