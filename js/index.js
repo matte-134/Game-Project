@@ -8,6 +8,7 @@ var leftKey;
 
 var gameloop;
 var player;
+var level;
 var borders = [];
 
 window.onload = () => {
@@ -16,12 +17,8 @@ window.onload = () => {
     
     player = new Player(50, 500)
 
-    for (i = 0; i < 10; i++) {
-        borders.push(new Border(0 + 50 * i, 700, 50, 5, 1))
-    }
-    for (i = 0; i < 5; i++) {
-        borders.push(new Border(500, 450 + 50 * i, 5, 50, 2))
-    }
+    level = new Level1()
+    
 
     gameLoop = setInterval(step, 1000/30)
 

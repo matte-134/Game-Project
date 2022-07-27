@@ -6,8 +6,9 @@ function Player (x, y) {
     this.xspeed = 0;
     this.yspeed = 0;
     this.friction = 0.6;
-    this.maxspeed = 10;
+    this.maxspeed = 20;
     this.active = true;
+    this.jump = false;
 
     this.step = function () {
         if (this.active) {
@@ -18,8 +19,9 @@ function Player (x, y) {
             } else if (leftKey) {
                 this.xspeed--
             };
-            if (upKey) {
-                this.yspeed -= 5;
+            if (upKey && !this.jump) {
+                this.yspeed -= 20;
+                this.jump = true;
             }
             this.yspeed +=1
             
@@ -75,11 +77,12 @@ function Player (x, y) {
                     this.xspeed = 0;
                 }
                 if (checkIntersections(vRect, bordersRect)) {
-                    while (checkIntersections(vRect, bordersRect)) {
-                        vRect.y -= Math.sign(this.yspeed)
-                    }
+                    // while (checkIntersections(vRect, bordersRect)) {
+                    //     vRect.y -= Math.sign(this.yspeed)
+                    // }
                     this.y = hRect.y;
                     this.yspeed = 0;
+                    this.jump = false;
                 }
             }
             this.x += this.xspeed
