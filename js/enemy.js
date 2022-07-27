@@ -67,3 +67,40 @@ function Enemy (x, y) {
         }
     }
 }
+function Spikes (x, y) {
+    this.x = x,
+    this.y = y, 
+    this.width = 500
+    this.height = 2
+
+    this.step = function () {
+    this.draw = function () {
+        ctx.fillStyle = "white"
+        ctx.fillRect(this.x, this.y, this.width, this.height)
+    }
+    let spikesRect = {
+        x: this.x,
+        y: this.y,
+        width: this.width,
+        height: this.height,
+    }
+    let hRect = {
+        x: player.x,
+        y: player.y,
+        width: player.width,
+        height: player.height,
+    }
+    let vRect = {
+        x: player.x,
+        y: player.y,
+        width: player.width,
+        height: player.height,
+    }
+    if (checkIntersections(vRect, spikesRect)) {
+        if (confirm("Game Over")) {
+            document.location.reload()
+            clearInterval(gameLoop)
+            }
+        }
+    }
+}

@@ -8,8 +8,10 @@ var leftKey;
 
 var gameLoop;
 var player;
-var power;
+var powerSmall;
+var powerBig;
 var enemy;
+var spikes;
 var level;
 var borders = [];
 var reset;
@@ -19,9 +21,10 @@ window.onload = () => {
     canvas = document.getElementById("game-canvas");
     ctx = canvas.getContext("2d")
     player = new Player(50, 500)
-    power = new Power(200, 200)    
+    powerSmall = new PowerSmall(200, 200)  
+    powerBig = new PowerBig(1000, 200)  
     enemy = new Enemy(800, 120)
-
+    spikes = new Spikes(700, 629)
     level = new Level1()
         
     gameLoop = setInterval(step, 1000/30)
@@ -44,7 +47,9 @@ let startGame = () => {
 function step () {
     player.step()
     enemy.step()
-    power.step()
+    powerSmall.step()
+    powerBig.step()
+    spikes.step()
     draw();
 }
 
@@ -53,7 +58,9 @@ function draw () {
     ctx.fillRect(0, 0, 1280, 720);
     player.draw()
     enemy.draw();
-    power.draw()
+    powerSmall.draw()
+    powerBig.draw()
+    spikes.draw()
     for (let i = 0; i < borders.length; i++) {
         borders[i].draw();
     }

@@ -42,4 +42,11 @@ function Level1() {
     for (i = 0; i < 128; i++) {
         borders.push(new Border(0 + 10 * i, 0, 10, 5, 2))
     }
+    // spikes
+    for (i = 0; i < 6; i++) {
+        borders.push(new Border(700 + 100 * i, 700, 100, 50, 2))
+    }
+    for (i = 0; i < 30; i++) {
+        borders.push(new Border(720 + 20 * i, 630, 5, 70, 1))
+    }
 }

@@ -84,19 +84,33 @@ function Player (x, y) {
                     this.jump = false;
                 }
             }
-            let powerRect = {
-                x: power.x,
-                y: power.y,
-                width: 2 * power.radius,
-                height: 2 * power.radius,
+            let powerSmallRect = {
+                x: powerSmall.x,
+                y: powerSmall.y,
+                width: 2 * powerSmall.radius,
+                height: 2 * powerSmall.radius,
             }
-            if (checkIntersections(hRect, powerRect)) {
+            if (checkIntersections(hRect, powerSmallRect)) {
                 player.height = 50;
                 player.width = 25;
                 }
+            let powerBigRect = {
+                x: powerBig.x,
+                y: powerBig.y,
+                width: 2 * powerBig.radius,
+                height: 2 * powerBig.radius,
+            }
+            if (checkIntersections(hRect, powerBigRect)) {
+                player.height = 150;
+                player.width = 75;
+                }
             this.x += this.xspeed
             this.y += this.yspeed
-        }
+            }
+            
+                
+            
+        
     }
     this.draw = function () {
         ctx.fillStyle = "blue"
