@@ -104,3 +104,42 @@ function Spikes (x, y) {
         }
     }
 }
+
+function Complete (x, y) {
+    this.x = x,
+    this.y = y,
+    this.width = 200,
+    this.height = 10,
+
+    this.step = function() {
+        this.draw = function () {
+            ctx.fillStyle = 'green'
+            ctx.fillRect(this.x, this.y, this.width, this.height)
+        }
+        let completeRect = {
+            x: this.x,
+            y: this.y,
+            width: this.width,
+            height: this.height,
+        }
+        let hRect = {
+            x: player.x,
+            y: player.y,
+            width: player.width,
+            height: player.height,
+        }
+        let vRect = {
+            x: player.x,
+            y: player.y,
+            width: player.width,
+            height: player.height,
+        }
+        if (checkIntersections(vRect, completeRect)) {
+            if (confirm("Congratulations!! You've passed Level 1, click ok to move onto Level 2")) {
+                clearInterval(gameLoop)
+                Level2();
+                }
+            }
+        }
+    }
+

@@ -16,33 +16,62 @@ var level;
 var borders = [];
 var reset;
 var start;
+var complete;
 
 window.onload = () => {
     canvas = document.getElementById("game-canvas");
     ctx = canvas.getContext("2d")
+    // player = new Player(50, 500)
+    // powerSmall = new PowerSmall(1000, 200)  
+    // powerBig = new PowerBig(200, 150)  
+    // enemy = new Enemy(800, 120)
+    // spikes = new Spikes(700, 629)
+    // level = new Level1Borders()
+    // complete = new Complete(1100, 490)
+        
+    // gameLoop = setInterval(step, 1000/30)
+
+    // setupInputs();
+
+    reset = document.getElementById('reset')
+    reset.addEventListener('click', function () {
+        clearInterval(gameLoop)
+        Level1();
+    })
+
+}
+let Level1 = () => {
+    canvas = document.getElementById("game-canvas");
+    ctx = canvas.getContext("2d")
     player = new Player(50, 500)
-    powerSmall = new PowerSmall(200, 200)  
-    powerBig = new PowerBig(1000, 200)  
+    powerSmall = new PowerSmall(1000, 200)  
+    powerBig = new PowerBig(200, 150)  
     enemy = new Enemy(800, 120)
     spikes = new Spikes(700, 629)
-    level = new Level1()
+    level = new Level1Borders()
+    complete = new Complete(1100, 490)
         
     gameLoop = setInterval(step, 1000/30)
 
     setupInputs();
+}
+let Level2 = () => {
+    canvas = document.getElementById("game-canvas");
+    ctx = canvas.getContext("2d")
+    ctx.clearRect(0, 0, 1280, 720)
+    player = new Player(300, 500)
+    powerSmall = new PowerSmall(1000, 200)  
+    powerBig = new PowerBig(200, 150)  
+    enemy = new Enemy(800, 120)
+    spikes = new Spikes(700, 629)
+    level = new Level2Borders()
+    complete = new Complete(1100, 490)
+        
+    gameLoop = setInterval(step, 1000/30)
 
-    reset = document.getElementById('reset')
-    reset.addEventListener('click', function () {
-        document.location.reload();
-    })
-
+    setupInputs();
 }
 
-
-let startGame = () => {
-    start = document.getElementById("start");
-    
-}
 
 function step () {
     player.step()
@@ -50,6 +79,7 @@ function step () {
     powerSmall.step()
     powerBig.step()
     spikes.step()
+    complete.step()
     draw();
 }
 
@@ -61,6 +91,7 @@ function draw () {
     powerSmall.draw()
     powerBig.draw()
     spikes.draw()
+    complete.draw()
     for (let i = 0; i < borders.length; i++) {
         borders[i].draw();
     }
