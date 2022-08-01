@@ -14,8 +14,7 @@ function Border (x, y, width, height, type) {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-
-function Level1Borders() {
+    function Level1Borders() {
     for (i = 0; i < 10; i++) {
         borders.push(new Border(0 + 50 * i, 700, 50, 15, 1))
     }
@@ -51,7 +50,7 @@ function Level1Borders() {
     }
 }
 
-function Level2Borders() {
+    function Level2Borders() {
     for (i = 0; i < 10; i++) {
         borders.push(new Border(0 + 50 * i, 700, 50, 15, 1))
     }

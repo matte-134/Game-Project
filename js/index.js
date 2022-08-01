@@ -40,9 +40,13 @@ window.onload = () => {
     })
 
 }
+let clearCanvas = () => {
+    
+}
 let Level1 = () => {
     canvas = document.getElementById("game-canvas");
     ctx = canvas.getContext("2d")
+    clearCanvas();
     player = new Player(50, 500)
     powerSmall = new PowerSmall(1000, 200)  
     powerBig = new PowerBig(200, 150)  
@@ -58,14 +62,15 @@ let Level1 = () => {
 let Level2 = () => {
     canvas = document.getElementById("game-canvas");
     ctx = canvas.getContext("2d")
-    ctx.clearRect(0, 0, 1280, 720)
+    ctx.fillStyle = 'red'
+    ctx.fillRect(0, 0, 1280, 720)
     player = new Player(300, 500)
     powerSmall = new PowerSmall(1000, 200)  
     powerBig = new PowerBig(200, 150)  
     enemy = new Enemy(800, 120)
     spikes = new Spikes(700, 629)
     level = new Level2Borders()
-    complete = new Complete(1100, 490)
+    complete = new Complete(500, 490)
         
     gameLoop = setInterval(step, 1000/30)
 
